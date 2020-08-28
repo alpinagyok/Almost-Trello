@@ -1,16 +1,15 @@
 import React, { useRef } from "react";
 
-interface TodoFormProps {
-  onAddTodo(title: string, plan_id: number): void;
-  plan_id: number;
+interface PlanFormProps {
+  onAddPlan(title: string): void;
 }
 
-export const TodoForm: React.FC<TodoFormProps> = (props) => {
+export const PlanForm: React.FC<PlanFormProps> = (props) => {
   const ref = useRef<HTMLInputElement>(null);
 
   const keyPressHandler = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      props.onAddTodo(ref.current!.value, props.plan_id);
+      props.onAddPlan(ref.current!.value);
       ref.current!.value = "";
     }
   };
@@ -21,11 +20,11 @@ export const TodoForm: React.FC<TodoFormProps> = (props) => {
         ref={ref}
         type="text"
         id="title"
-        placeholder="Enter TODO"
+        placeholder="Enter Plan"
         onKeyPress={keyPressHandler}
       />
       <label className="active" htmlFor="title">
-        Enter TODO
+        Enter Plan
       </label>
     </div>
   );

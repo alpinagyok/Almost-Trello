@@ -1,30 +1,36 @@
 import React from "react";
-import { ITodo } from "../interfaces";
+import { ITodo, IPlan } from "../interfaces";
 
-interface TodoListProps {
-  todos: ITodo[];
+interface TodoList {
+  // todos: ITodo[];
+  // id: number;
+  plan: IPlan;
   onToggleTodo(id: number): void;
-  onRemove(id: number): void;
+  onRemoveTodo(plan: IPlan): void;
 }
 
-export const TodoList: React.FC<TodoListProps> = ({
-  todos,
-  onRemove,
+export const TodoList: React.FC<TodoList> = ({
+  // todos,
+  // id,
+  plan,
+  onRemoveTodo,
   onToggleTodo,
 }) => {
-  if (todos.length === 0) {
+  if (plan.todos.length === 0) {
     return <p className="center">No todos yet</p>;
   }
 
   const removeHandler = (e: React.MouseEvent, id: number) => {
     e.preventDefault();
 
-    onRemove(id);
+    plan.todos = plan.todos.filter((todo) => todo.id !== id);
+
+    onRemoveTodo(plan);
   };
 
   return (
     <ul>
-      {todos.map((todo) => {
+      {plan.todos.map((todo) => {
         const classes = ["todo"];
         if (todo.completed) {
           classes.push("completed");

@@ -3,3 +3,9 @@ export interface ITodo {
   id: number;
   completed: boolean;
 }
+
+export interface IPlan {
+  title: string;
+  id: number;
+  todos: ITodo[];
+}

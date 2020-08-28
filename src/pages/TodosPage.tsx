@@ -28,12 +28,6 @@ export const TodosPage: React.FC = () => {
   };
 
   const addTodoHandler = (title: string, plan_id: number) => {
-    const newTodo: ITodo = {
-      title,
-      id: Date.now(),
-      completed: false,
-    };
-
     setPlans((prev) =>
       prev.map((plan) => {
         if (plan.id === plan_id) {
@@ -50,23 +44,12 @@ export const TodosPage: React.FC = () => {
     );
   };
 
-  // const toggleHandler = (id: number) => {
-  //   setPlans((prev) =>
-  //     prev.map((todo) => {
-  //       if (todo.id === id) {
-  //         todo.completed = !todo.completed;
-  //       }
-  //       return todo;
-  //     })
-  //   );
-  // };
-
   const removeHandler = (id: number) => {
     const shouldRemove = confirm("Are you sure");
     if (shouldRemove) setPlans((prev) => prev.filter((plan) => plan.id !== id));
   };
 
-  const removeTodoHandler = (plan: IPlan) => {
+  const updateTodosHandler = (plan: IPlan) => {
     setPlans((prev) =>
       prev.map((prev_plan) => {
         if (prev_plan.id === plan.id) {
@@ -82,8 +65,7 @@ export const TodosPage: React.FC = () => {
       <PlanForm onAddPlan={addHandler} />
       <PlanList
         plans={plans}
-        // onToggleTodo={toggleHandler}
-        onRemoveTodo={removeTodoHandler}
+        onUpdateTodos={updateTodosHandler}
         onRemovePlan={removeHandler}
         onAddTodo={addTodoHandler}
       />

@@ -1,21 +1,12 @@
 import React from "react";
-import { ITodo, IPlan } from "../interfaces";
+import { IPlan } from "../interfaces";
 
 interface TodoList {
-  // todos: ITodo[];
-  // id: number;
   plan: IPlan;
-  onToggleTodo(id: number): void;
-  onRemoveTodo(plan: IPlan): void;
+  onUpdateTodos(plan: IPlan): void;
 }
 
-export const TodoList: React.FC<TodoList> = ({
-  // todos,
-  // id,
-  plan,
-  onRemoveTodo,
-  onToggleTodo,
-}) => {
+export const TodoList: React.FC<TodoList> = ({ plan, onUpdateTodos }) => {
   if (plan.todos.length === 0) {
     return <p className="center">No todos yet</p>;
   }
@@ -25,7 +16,18 @@ export const TodoList: React.FC<TodoList> = ({
 
     plan.todos = plan.todos.filter((todo) => todo.id !== id);
 
-    onRemoveTodo(plan);
+    onUpdateTodos(plan);
+  };
+
+  const toggleHandler = (id: number) => {
+    plan.todos = plan.todos.map((todo) => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+
+    onUpdateTodos(plan);
   };
 
   return (
@@ -42,7 +44,7 @@ export const TodoList: React.FC<TodoList> = ({
               <input
                 type="checkbox"
                 checked={todo.completed}
-                onChange={() => onToggleTodo(todo.id)}
+                onClick={(e) => toggleHandler(todo.id)}
               />
               <span>{todo.title}</span>
               <i

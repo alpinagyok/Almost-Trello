@@ -1,13 +1,12 @@
 import React from "react";
-import { ITodo, IPlan } from "../interfaces";
+import { IPlan } from "../interfaces";
 import { TodoList } from "./TodoList";
 import { TodoForm } from "./TodoForm";
 
 interface PlanListProps {
   plans: IPlan[];
-  // onToggleTodo(id: number): void;
   onRemovePlan(id: number): void;
-  onRemoveTodo(plan: IPlan): void;
+  onUpdateTodos(plan: IPlan): void;
   onAddTodo(title: string, plan_id: number): void;
 }
 
@@ -15,8 +14,7 @@ export const PlanList: React.FC<PlanListProps> = ({
   plans,
   onRemovePlan,
   onAddTodo,
-  onRemoveTodo,
-  // onToggleTodo,
+  onUpdateTodos,
 }) => {
   if (plans.length === 0) {
     return <p className="center">No todos yet</p>;
@@ -31,7 +29,6 @@ export const PlanList: React.FC<PlanListProps> = ({
   return (
     <ul>
       {plans.map((plan) => {
-        // const classes = ["todo"];
         const classes = [""];
 
         return (
@@ -45,11 +42,7 @@ export const PlanList: React.FC<PlanListProps> = ({
                 delete
               </i>
             </label>
-            <TodoList
-              plan={plan}
-              onRemoveTodo={() => onRemoveTodo(plan)}
-              onToggleTodo={() => console.log("hello")}
-            />
+            <TodoList plan={plan} onUpdateTodos={() => onUpdateTodos(plan)} />
             <TodoForm onAddTodo={onAddTodo} plan_id={plan.id} />
           </li>
         );

@@ -8,7 +8,13 @@ interface TodoList {
 
 export const TodoList: React.FC<TodoList> = ({ plan, onUpdateTodos }) => {
   if (plan.todos.length === 0) {
-    return <p className="center">No todos yet</p>;
+    return (
+      <ul className="todo-list">
+        <li className="todo">
+          <label>No todos yet</label>
+        </li>
+      </ul>
+    );
   }
 
   const removeHandler = (e: React.MouseEvent, id: number) => {
@@ -31,7 +37,7 @@ export const TodoList: React.FC<TodoList> = ({ plan, onUpdateTodos }) => {
   };
 
   return (
-    <ul>
+    <ul className="todo-list">
       {plan.todos.map((todo) => {
         const classes = ["todo"];
         if (todo.completed) {

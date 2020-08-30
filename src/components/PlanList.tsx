@@ -17,7 +17,7 @@ export const PlanList: React.FC<PlanListProps> = ({
   onUpdateTodos,
 }) => {
   if (plans.length === 0) {
-    return <p className="center">No todos yet</p>;
+    return <h4 className="center">No plans yet</h4>;
   }
 
   const removeHandler = (e: React.MouseEvent, id: number) => {
@@ -27,24 +27,24 @@ export const PlanList: React.FC<PlanListProps> = ({
   };
 
   return (
-    <ul>
+    <div className="plans">
       {plans.map((plan) => {
         return (
-          <li className="plan m-1" key={plan.id}>
-            <label>
+          <div className="plan" key={plan.id}>
+            <header>
               <span>Plan: {plan.title}</span>
               <i
-                className="material-icons red-text"
+                className="material-icons"
                 onClick={(e) => removeHandler(e, plan.id)}
               >
                 delete
               </i>
-            </label>
-            <TodoForm onAddTodo={onAddTodo} plan_id={plan.id} />
+            </header>
             <TodoList plan={plan} onUpdateTodos={() => onUpdateTodos(plan)} />
-          </li>
+            <TodoForm onAddTodo={onAddTodo} plan_id={plan.id} />
+          </div>
         );
       })}
-    </ul>
+    </div>
   );
 };

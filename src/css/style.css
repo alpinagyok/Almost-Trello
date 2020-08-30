@@ -1,78 +1,13 @@
-.m-1 {
-  margin: 1rem; }
-
-.my-1 {
-  margin: 1rem 0; }
-
-.p-1 {
-  padding: 1rem; }
-
-.py-1 {
-  padding: 1rem 0; }
-
-.m-2 {
-  margin: 2rem; }
-
-.my-2 {
-  margin: 2rem 0; }
-
-.p-2 {
-  padding: 2rem; }
-
-.py-2 {
-  padding: 2rem 0; }
-
-.m-3 {
-  margin: 3rem; }
-
-.my-3 {
-  margin: 3rem 0; }
-
-.p-3 {
-  padding: 3rem; }
-
-.py-3 {
-  padding: 3rem 0; }
-
-.m-4 {
-  margin: 4rem; }
-
-.my-4 {
-  margin: 4rem 0; }
-
-.p-4 {
-  padding: 4rem; }
-
-.py-4 {
-  padding: 4rem 0; }
-
-.m-5 {
-  margin: 5rem; }
-
-.my-5 {
-  margin: 5rem 0; }
-
-.p-5 {
-  padding: 5rem; }
-
-.py-5 {
-  padding: 5rem 0; }
-
 .container {
   max-width: 1100px;
   padding: 0 30px;
   margin: 0 auto;
   overflow: auto; }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0; }
-
 body {
-  background-color: #f4f4f4;
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6; }
+  line-height: 1.3em; }
 
 a {
   text-decoration: none; }
@@ -95,42 +30,71 @@ nav {
   nav a:hover {
     color: #ff8700; }
 
+.plans {
+  display: flex;
+  overflow-x: auto; }
+  .plans > * {
+    flex: 0 0 auto;
+    margin-left: 10px; }
+  .plans::after {
+    content: "";
+    flex: 0 0 10px; }
+
 .plan {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-  margin: 1rem auto;
-  list-style-type: none;
-  align-items: center;
-  justify-content: space-between;
-  border: 3px solid #0041a7;
-  border-radius: 5px;
-  color: #0041a7; }
-  .plan-form {
-    margin: auto;
-    width: 50%;
-    padding: 10px; }
-  .plan label {
+  width: 300px;
+  height: calc(100% - 10px - 17px); }
+  .plan > * {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 0 10px; }
+  .plan header {
+    line-height: 36px;
+    font-size: 16px;
     font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between; }
-
-.completed span {
-  text-decoration: line-through; }
+  .plan footer {
+    line-height: 36px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #888; }
 
 .todo {
-  list-style-type: none;
-  margin: 0.5rem auto; }
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }
   .todo label {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
-    padding: 0.3rem;
-    background: #eef5ff;
-    border: 3px solid #0e6cff;
-    border-radius: 5px; }
-  .todo i {
-    z-index: 2; }
+    cursor: pointer; }
+  .todo-list {
+    list-style: none;
+    margin: 0;
+    max-height: calc(100% - 36px - 36px);
+    overflow-y: auto; }
+
+.completed span {
+  text-decoration: line-through; }
+
+.plan-form input,
+.todo-form input {
+  border: 1px solid #c2c2c2;
+  box-shadow: 1px 1px 4px #f4f4f4;
+  border-radius: 3px;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 10px;
+  width: calc(100% - 20px); }
+  .plan-form input:focus,
+  .todo-form input:focus {
+    border: 1px solid #0e6cff; }
+
+.plan-form {
+  margin: 2rem; }

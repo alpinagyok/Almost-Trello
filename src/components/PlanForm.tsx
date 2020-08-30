@@ -20,12 +20,9 @@ export const PlanForm: React.FC<PlanFormProps> = (props) => {
         ref={ref}
         type="text"
         id="title"
-        placeholder="Enter Plan"
+        placeholder="Enter Plan and press ENTER"
         onKeyPress={keyPressHandler}
       />
-      <label className="active" htmlFor="title">
-        Enter Plan
-      </label>
     </div>
   );
 };

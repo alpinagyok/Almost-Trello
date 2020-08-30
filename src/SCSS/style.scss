@@ -1,16 +1,12 @@
 @import "config";
 @import "utilities";
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  background-color: $light-color;
+  margin: 0;
+
   font-family: $font-stack;
-  line-height: 1.6;
+  // font-size: 14px;
+  line-height: 1.3em;
 }
 
 a {
@@ -44,42 +40,59 @@ nav {
   }
 }
 
-@mixin center() {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
+.plans {
+  display: flex;
+  overflow-x: auto;
+
+  > * {
+    flex: 0 0 auto;
+    margin-left: $gap;
+  }
+  &::after {
+    content: "";
+    flex: 0 0 $gap;
+  }
 }
 
 .plan {
-  @include center();
-  margin: 1rem auto;
+  width: $plan-width;
+  height: calc(100% - #{$gap} - #{$scrollbar-thickness});
 
-  list-style-type: none;
-  align-items: center;
-  justify-content: space-between;
-  border: 3px solid darken($primary-color, 20%);
-  border-radius: 5px;
+  > * {
+    background-color: $light-color;
+    color: #333;
 
-  color: darken($primary-color, 20%);
-
-  &-form {
-    @include center();
+    padding: 0 $gap;
   }
 
-  label {
+  header {
+    line-height: $plan-header-height;
+    font-size: 16px;
     font-weight: bold;
+    border-top-left-radius: $plan-border-radius;
+    border-top-right-radius: $plan-border-radius;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-}
-.completed span {
-  text-decoration: line-through;
+
+  footer {
+    line-height: $plan-footer-height;
+    border-bottom-left-radius: $plan-border-radius;
+    border-bottom-right-radius: $plan-border-radius;
+    color: #888;
+  }
 }
 
 .todo {
-  list-style-type: none;
-  margin: 0.5rem auto;
+  background-color: #fff;
+  padding: $gap;
+
+  margin-bottom: $gap;
+
+  border-radius: $card-border-radius;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 
   label {
     width: 100%;
@@ -87,13 +100,38 @@ nav {
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    padding: 0.3rem;
-    background: lighten($primary-color, 44%);
-    border: 3px solid $primary-color;
-    border-radius: 5px;
   }
 
-  i {
-    z-index: 2;
+  &-list {
+    list-style: none;
+    margin: 0;
+
+    max-height: calc(100% - #{$plan-header-height} - #{$plan-footer-height});
+    overflow-y: auto;
   }
+}
+
+.completed span {
+  text-decoration: line-through;
+}
+
+.plan-form,
+.todo-form {
+  input {
+    border: 1px solid $grey-color;
+    box-shadow: 1px 1px 4px $light-color;
+    border-radius: 3px;
+    padding: $gap;
+    outline: none;
+    margin-bottom: $gap;
+    width: calc(100% - #{2 * $gap});
+
+    &:focus {
+      border: 1px solid $primary-color;
+    }
+  }
+}
+
+.plan-form {
+  margin: 2rem;
 }

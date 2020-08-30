@@ -1,27 +1,19 @@
-$font-stack: Arial, Helvetica, sans-serif;
+// Layout
+$plan-width: 300px;
+$gap: 10px;
+$scrollbar-thickness: 17px;
+$plan-header-height: 36px;
+$plan-footer-height: 36px;
+// Misc
+$plan-border-radius: 5px;
+$card-border-radius: 3px;
+// Colors
 $light-color: #f4f4f4;
+$grey-color: #c2c2c2;
 $primary-color: #0e6cff;
-// $primary-color: #e0ffff;
 $secondary-color: #ff8700;
-
-// Margin & padding classes
-$spaceamounts: (1, 2, 3, 4, 5);
-
-@each $space in $spaceamounts {
-  .m-#{$space} {
-    margin: #{$space}rem;
-  }
-  .my-#{$space} {
-    margin: #{$space}rem 0;
-  }
-
-  .p-#{$space} {
-    padding: #{$space}rem;
-  }
-  .py-#{$space} {
-    padding: #{$space}rem 0;
-  }
-}
+// Font
+$font-stack: Arial, Helvetica, sans-serif;
 
 // Set text color based on bg
 @function set-text-color($color) {

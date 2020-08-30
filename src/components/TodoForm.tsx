@@ -16,17 +16,14 @@ export const TodoForm: React.FC<TodoFormProps> = (props) => {
   };
 
   return (
-    <div className="todo-form">
+    <footer className="todo-form">
       <input
         ref={ref}
         type="text"
         id="title"
-        placeholder="Enter TODO"
+        placeholder="Enter TODO and press ENTER"
         onKeyPress={keyPressHandler}
       />
-      <label className="active" htmlFor="title">
-        Enter TODO
-      </label>
-    </div>
+    </footer>
   );
 };

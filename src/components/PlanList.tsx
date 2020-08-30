@@ -29,10 +29,8 @@ export const PlanList: React.FC<PlanListProps> = ({
   return (
     <ul>
       {plans.map((plan) => {
-        const classes = [""];
-
         return (
-          <li className={classes.join(" ")} key={plan.id}>
+          <li className="plan m-1" key={plan.id}>
             <label>
               <span>Plan: {plan.title}</span>
               <i
@@ -42,8 +40,8 @@ export const PlanList: React.FC<PlanListProps> = ({
                 delete
               </i>
             </label>
-            <TodoList plan={plan} onUpdateTodos={() => onUpdateTodos(plan)} />
             <TodoForm onAddTodo={onAddTodo} plan_id={plan.id} />
+            <TodoList plan={plan} onUpdateTodos={() => onUpdateTodos(plan)} />
           </li>
         );
       })}

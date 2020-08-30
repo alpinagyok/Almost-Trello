@@ -1,0 +1,99 @@
+@import "config";
+@import "utilities";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $light-color;
+  font-family: $font-stack;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-bg {
+  @include set-background($primary-color);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ul {
+    display: flex;
+    list-style-type: none;
+  }
+
+  li {
+    padding: 15px;
+  }
+
+  a {
+    color: set-text-color($primary-color);
+  }
+
+  a:hover {
+    color: $secondary-color;
+  }
+}
+
+@mixin center() {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.plan {
+  @include center();
+  margin: 1rem auto;
+
+  list-style-type: none;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid darken($primary-color, 20%);
+  border-radius: 5px;
+
+  color: darken($primary-color, 20%);
+
+  &-form {
+    @include center();
+  }
+
+  label {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.completed span {
+  text-decoration: line-through;
+}
+
+.todo {
+  list-style-type: none;
+  margin: 0.5rem auto;
+
+  label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 0.3rem;
+    background: lighten($primary-color, 44%);
+    border: 3px solid $primary-color;
+    border-radius: 5px;
+  }
+
+  i {
+    z-index: 2;
+  }
+}

@@ -15,7 +15,7 @@ export const PlanForm: React.FC<PlanFormProps> = (props) => {
   };
 
   return (
-    <div className="input-field mt2">
+    <div className="plan-form">
       <input
         ref={ref}
         type="text"

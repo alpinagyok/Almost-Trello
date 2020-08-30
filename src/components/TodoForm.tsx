@@ -16,7 +16,7 @@ export const TodoForm: React.FC<TodoFormProps> = (props) => {
   };
 
   return (
-    <div className="input-field mt2">
+    <div className="todo-form">
       <input
         ref={ref}
         type="text"
